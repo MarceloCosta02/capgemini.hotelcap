@@ -26,7 +26,7 @@ GO
 CREATE TABLE [BedRoom] (
     [Id] int NOT NULL IDENTITY,
     [Floor] int NOT NULL,
-    [NoQuarto] int NOT NULL,
+    [NoBedroom] int NOT NULL,
     [Situation] char NOT NULL,
     [IdBedroomType] int NOT NULL,
     CONSTRAINT [PK_Operacao] PRIMARY KEY ([Id]),
@@ -45,7 +45,8 @@ CREATE TABLE [Occupation] (
     CONSTRAINT [PK_Occupation] PRIMARY KEY ([Id]),
 );
 
+GO
+
 CREATE INDEX [IX_BedRoom_IIdBedroomType] ON [BedRoom] ([IdBedroomType]);
 
-GO
 

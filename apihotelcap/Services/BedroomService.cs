@@ -40,10 +40,13 @@ namespace apihotelcap.Services
         }
 
         public bool ValidateBedroomChilds(Bedroom bedroom)
-        {     
+        {
+            string Active = BedroomTypeValues.A.ToString();
+            string Inactive = BedroomTypeValues.I.ToString();
+
             if (bedroom.NoBedroom < 1)
                 throw new Exception("O número de quartos não pode ser menor que 1");
-            else if (!bedroom.Situation.Contains(nameof(BedroomTypeValues.A)) || !bedroom.Situation.Contains(nameof(BedroomTypeValues.I)))
+            else if (!bedroom.Situation.Equals(Active) && !bedroom.Situation.Equals(Inactive))
                 throw new Exception($"A situação do quarto não pode ser {bedroom.Situation}, são aceitos apenas A (Ativo) e I (Inativo)");
             else if (bedroom.IdBedroomType == 0)
                 throw new Exception("O Id do quarto não pode ser 0");

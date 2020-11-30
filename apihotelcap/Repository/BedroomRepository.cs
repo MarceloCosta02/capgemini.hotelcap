@@ -47,7 +47,7 @@ namespace apihotelcap.Repository
         {
             var connection = new SqlConnection(_connectionString);
 
-            var query = "select count(IdBedroomType) from BedroomType " +
+            var query = "select count(Id) from BedroomType " +
                             " where Id = @IdBedroomType";
 
             var result = connection.Query<int>(query, new { IdBedroomType = IdBedroomType });

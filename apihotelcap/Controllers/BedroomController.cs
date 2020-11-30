@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using apihotelcap.Interfaces.Services;
-using apihotelcap.Models.RequestModels;
+using apihotelcap.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 

@@ -1,7 +1,7 @@
 ﻿using apihotelcap.Enums;
 using apihotelcap.Interfaces.Repository;
 using apihotelcap.Interfaces.Services;
-using apihotelcap.Models.RequestModels;
+using apihotelcap.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

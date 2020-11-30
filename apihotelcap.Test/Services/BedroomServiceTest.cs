@@ -1,5 +1,5 @@
 ﻿using apihotelcap.Interfaces.Repository;
-using apihotelcap.Models.RequestModels;
+using apihotelcap.Models;
 using apihotelcap.Services;
 using AutoFixture;
 using FluentAssertions;

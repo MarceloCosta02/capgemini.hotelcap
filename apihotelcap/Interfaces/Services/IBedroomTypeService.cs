@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace apihotelcap.Interfaces.Services
 {
-    public interface IBedroomService
+    public interface IBedroomTypeService
     {
         /// <summary>
-        /// Metodo que insere quartos
+        /// Metodo que insere os tipos de quartos
         /// </summary>
-        /// <param name="bedroom"></param>
-        Bedroom InsertBedroom(Bedroom bedroom);
+        /// <param name="bedroomType"></param>
+        BedroomType InsertBedroomType(BedroomType bedroomType);
     }
 }

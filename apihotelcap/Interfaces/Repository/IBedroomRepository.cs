@@ -1,4 +1,4 @@
-﻿using apihotelcap.Models.RequestModels;
+﻿using apihotelcap.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

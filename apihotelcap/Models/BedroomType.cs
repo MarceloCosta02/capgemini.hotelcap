@@ -10,18 +10,12 @@ using System.Threading.Tasks;
 
 namespace apihotelcap.Models
 {
-    public class Bedroom
+    public class BedroomType
     {
-        [Description("Andar")]
-        public int Floor { get; set; }
+        public string Description { get; set; }
 
-        [Description("Número do Quarto")]
-        public int NoBedroom { get; set; }
+        public double Value { get; set; }   
 
-        public string Situation { get; set; }
-
-        public int IdBedroomType { get; set; }
-
-        public Bedroom() { }
+        public BedroomType() { }
     }
 }

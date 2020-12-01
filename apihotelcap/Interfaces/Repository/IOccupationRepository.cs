@@ -21,6 +21,11 @@ namespace apihotelcap.Interfaces.Repository
         /// <summary>
         /// Metodo que lista as ocupações não pagas
         /// </summary>
-        List<InvoiceModel> GetOccupationsDontPaid();
+        Task<List<InvoiceModel>> GetOccupationsDontPaid();
+
+        /// <summary>
+        /// Metodo que atualiza as ocupações para pagas
+        /// </summary>
+        void SetOccupationsToPaid(string Situation, int Id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using apihotelcap.Domain.DTO;
+using apihotelcap.Domain.Models;
 using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
 using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Domain.RequestModels.ClientRequests;
@@ -29,11 +30,26 @@ namespace apihotelcap.Services
 
         public async Task<TransferResultDTO> GetOccupationsDontPaid()
         {
-            var occupations = _repo.GetOccupationsDontPaid();
+            TransferResultDTO result = null;
+            var occupations = await _repo.GetOccupationsDontPaid();
 
-            var result = await _transferFacade.CallTransferAPI(occupations);
+            if (!occupations.Any())
+                throw new Exception("Não existem ocupações com pagamento pendente");
+            else
+            {
+                foreach (var item in occupations)
+                {
+                    result = await _transferFacade.CallTransferAPI(item);
+                    if (result.Status == "400")
+                        return result;
+                    else
+                    {
+                        _repo.SetOccupationsToPaid("P", item.Id);
+                    }
+                }
 
-            return result;
+                return result;
+            }           
         }
     }
 }

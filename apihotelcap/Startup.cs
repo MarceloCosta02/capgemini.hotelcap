@@ -49,6 +49,8 @@ namespace apihotelcap
             services.AddScoped<IOccupationService, OccupationService>();
             services.AddScoped<IOccupationRepository, OccupationRepository>();
 
+            services.AddScoped<IInvoiceService, InvoiceService>();
+
             services.AddScoped<IBankGateway, BankGateway>();
             services.AddScoped<ITransferFacade, TransferFacade>();
         }
@@ -73,6 +75,8 @@ namespace apihotelcap
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }

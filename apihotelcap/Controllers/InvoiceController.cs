@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using apihotelcap.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -19,18 +20,22 @@ namespace apihotelcap.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        public IActionResult SendOccupationsDontPaid()
+        [HttpPost]
+        public async Task<IActionResult> SendOccupationsDontPaid()
         {
             try
             {
-                var result = _service.GetOccupationsDontPaid();
-                return Ok(result);
+                var result = await _service.GetOccupationsDontPaid();
+
+                if(result.Status == "201")
+                    return new ObjectResult(result) { StatusCode = StatusCodes.Status201Created };
+                else
+                    return new ObjectResult(result) { StatusCode = StatusCodes.Status400BadRequest };
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ex);
             }
         }
     }

@@ -9,6 +9,6 @@ namespace apihotelcap.Interfaces.Infra.Facade
 {
     public interface ITransferFacade
     {
-        Task<TransferResultDTO> CallTransferAPI(IEnumerable<InvoiceModel> invoices);
+        Task<TransferResultDTO> CallTransferAPI(InvoiceModel invoices);
     }
 }

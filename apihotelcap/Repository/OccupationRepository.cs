@@ -50,19 +50,36 @@ namespace apihotelcap.Repository
         /// <summary>
         /// Metodo que lista as ocupações não pagas
         /// </summary>
-        public List<InvoiceModel> GetOccupationsDontPaid()
+        public async Task<List<InvoiceModel>> GetOccupationsDontPaid()
         {
             var connection = new SqlConnection(_connectionString);
 
-            var query = "select(occ.QtdeDiarys * bt.Value) as TotalValue, c.Hash from Occupation occ " +
+            var query = "select occ.Id, (occ.QtdeDiarys * bt.Value) as TotalValue, c.Hash from Occupation occ " +
                         "inner join Client c on c.Id = occ.IdClient " +
                         "inner join BedRoom b on b.Id = occ.IdBedroom " +
                         "inner join BedroomType bt on bt.Id = b.IdBedroomType " +
                         "where occ.Situation = 'N' ";
 
-            var result = connection.Query<InvoiceModel>(query);
-
+            var result = await connection.QueryAsync<InvoiceModel>(query);
+            
             return result.ToList();
+        }
+
+        public void SetOccupationsToPaid(string Situation, int Id)
+        {
+            var connection = new SqlConnection(_connectionString);
+
+            var query = "update Occupation " +
+                        "set Situation = @Situation " +
+                        "where Id = @Id ";
+
+            var result = connection.Execute(query, new
+            {
+                Situation = Situation,
+                Id = Id
+            });
+
+            Debug.WriteLine("Ocupação atualizada com sucesso");
         }
     }
 }

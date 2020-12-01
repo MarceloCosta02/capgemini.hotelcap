@@ -8,7 +8,7 @@ namespace apihotelcap.Enums
 {
     public enum BankGatewayEndpoint
     {
-        [Description("api/MakeTransfer")]
+        [Description("/api/Operation/MakeTransfer")]
         Transfer
     }
 }

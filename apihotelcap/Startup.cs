@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using apihotelcap.Configuration;
+using apihotelcap.Infra.ExternalServices;
+using apihotelcap.Infra.Facade;
+using apihotelcap.Interfaces.Infra.ExternalServices;
+using apihotelcap.Interfaces.Infra.Facade;
 using apihotelcap.Interfaces.Repository;
 using apihotelcap.Interfaces.Services;
 using apihotelcap.Repository;
@@ -44,6 +48,9 @@ namespace apihotelcap
 
             services.AddScoped<IOccupationService, OccupationService>();
             services.AddScoped<IOccupationRepository, OccupationRepository>();
+
+            services.AddScoped<IBankGateway, BankGateway>();
+            services.AddScoped<ITransferFacade, TransferFacade>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

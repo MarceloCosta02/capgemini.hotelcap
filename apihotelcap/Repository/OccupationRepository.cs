@@ -1,4 +1,5 @@
-﻿using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
+﻿using apihotelcap.Domain.Models;
+using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
 using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Domain.RequestModels.ClientRequests;
 using apihotelcap.Domain.ResponseModels.ClientResponses;
@@ -44,6 +45,24 @@ namespace apihotelcap.Repository
             });
 
             Debug.WriteLine("Ocupação cadastrada com sucesso");
-        }            
+        }
+
+        /// <summary>
+        /// Metodo que lista as ocupações não pagas
+        /// </summary>
+        public List<InvoiceModel> GetOccupationsDontPaid()
+        {
+            var connection = new SqlConnection(_connectionString);
+
+            var query = "select(occ.QtdeDiarys * bt.Value) as TotalValue, c.Hash from Occupation occ " +
+                        "inner join Client c on c.Id = occ.IdClient " +
+                        "inner join BedRoom b on b.Id = occ.IdBedroom " +
+                        "inner join BedroomType bt on bt.Id = b.IdBedroomType " +
+                        "where occ.Situation = 'N' ";
+
+            var result = connection.Query<InvoiceModel>(query);
+
+            return result.ToList();
+        }
     }
 }

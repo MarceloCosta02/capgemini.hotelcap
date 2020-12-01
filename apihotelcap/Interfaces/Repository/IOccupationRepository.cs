@@ -1,4 +1,5 @@
-﻿using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
+﻿using apihotelcap.Domain.Models;
+using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
 using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Domain.RequestModels.ClientRequests;
 using apihotelcap.Domain.ResponseModels.ClientResponses;
@@ -15,6 +16,11 @@ namespace apihotelcap.Interfaces.Repository
         /// Metodo que cadastra as ocupações no banco
         /// </summary>
         /// <param name="occupation"></param>
-        void InsertOccupation(OccupationCreateRequest occupation);          
+        void InsertOccupation(OccupationCreateRequest occupation);
+
+        /// <summary>
+        /// Metodo que lista as ocupações não pagas
+        /// </summary>
+        List<InvoiceModel> GetOccupationsDontPaid();
     }
 }

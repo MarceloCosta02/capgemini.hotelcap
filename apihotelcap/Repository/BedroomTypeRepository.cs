@@ -1,5 +1,6 @@
-﻿using apihotelcap.Interfaces.Repository;
-using apihotelcap.Models;
+﻿using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
+using apihotelcap.Domain.RequestModels.BedroomRequests;
+using apihotelcap.Interfaces.Repository;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -20,7 +21,7 @@ namespace apihotelcap.Repository
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public BedroomType InsertBedroomType(BedroomType bedroomType)
+        public void InsertBedroomType(BedroomTypeCreateRequest bedroomType)
         {
             var connection = new SqlConnection(_connectionString);
 
@@ -34,7 +35,35 @@ namespace apihotelcap.Repository
             });
 
             Debug.WriteLine("Tipo de Quarto cadastrado com sucesso");
-            return bedroomType;
         }
+
+        /// <summary>
+        /// Metodo que lista todos os tipos de quarto do banco
+        /// </summary>  
+        public IEnumerable<BedroomTypeResponse> GetAllBedroomsType()
+        {
+            var connection = new SqlConnection(_connectionString);
+
+            var result = connection
+                            .Query<BedroomTypeResponse>("select Id, Description, Value from BedroomType");
+
+            return result;
+        }
+
+        /// <summary>
+        /// Metodo que lista um tipo de quarto pelo id
+        /// </summary>
+        /// <param name="Id"></param>
+        public BedroomTypeResponse GetBedroomTypeById(int Id)
+        {
+            var connection = new SqlConnection(_connectionString);
+
+            var query = "select Id, Description, Value from BedroomType " +
+                            " where Id = @Id";
+
+            var result = connection.Query<BedroomTypeResponse>(query, new { Id = Id });
+
+            return result.FirstOrDefault();
+        }      
     }
 }

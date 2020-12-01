@@ -8,14 +8,20 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace apihotelcap.Models
+namespace apihotelcap.Domain.Models
 {
-    public class BedroomType
+    public class BedroomTypeModel
     {
         public string Description { get; set; }
 
         public double Value { get; set; }   
 
-        public BedroomType() { }
+        public BedroomTypeModel() { }
+
+        public BedroomTypeModel(string description, double value)
+        {
+            Description = description;
+            Value = value;
+        }
     }
 }

@@ -1,7 +1,8 @@
-﻿using apihotelcap.Enums;
+﻿using apihotelcap.Domain.RequestModels.BedroomRequests;
+using apihotelcap.Domain.ResponseModels.Bedroom.BedroomResponses;
+using apihotelcap.Enums;
 using apihotelcap.Interfaces.Repository;
 using apihotelcap.Interfaces.Services;
-using apihotelcap.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +21,27 @@ namespace apihotelcap.Services
             _repo = repo;
         }
 
-        public Bedroom InsertBedroom(Bedroom bedroom)
+        public BedroomAndBedroomTypeResponse GetBedroomById(int Id)
+        {
+            var result = _repo.GetBedroomById(Id);
+
+            if (result == null || result.Equals(""))
+                throw new Exception($"Não existe um quarto com o ID: {Id}");
+            else
+                return result;
+        }
+
+        public IEnumerable<BedroomAndBedroomTypeResponse> GetBedroomByIdBedroomType(int IdBedroomType)
+        {
+            var result = _repo.GetBedroomByIdBedroomType(IdBedroomType);
+
+            if (result == null || result.Equals(""))
+                throw new Exception($"Não existe um quarto com o ID de tipo do quarto: {IdBedroomType}");
+            else
+                return result;
+        }
+
+        public void InsertBedroom(BedroomCreateRequest bedroom)
         {
             var result = ValidateBedroomChilds(bedroom);
 
@@ -30,16 +51,24 @@ namespace apihotelcap.Services
                 if (IdBedroomType != 0)
                 {
                     _repo.InsertBedroom(bedroom);
-                    return bedroom;
                 }
                 else
                     throw new Exception($"O quarto com ID {bedroom.IdBedroomType} não está cadastrado");
-            }
-            else
-                return new Bedroom();
+            }          
         }
 
-        public bool ValidateBedroomChilds(Bedroom bedroom)
+        public string UpdateSituation(BedroomUpdateRequest bedroomUpdate, int Id)
+        {
+            if (!bedroomUpdate.Situation.Any())
+                throw new Exception("Situation não pode ser vazio");
+            else
+            {
+                var result = _repo.UpdateSituation(bedroomUpdate.Situation, Id);
+                return result;
+            }
+        }
+
+        public bool ValidateBedroomChilds(BedroomCreateRequest bedroom)
         {
             string Active = BedroomTypeValues.A.ToString();
             string Inactive = BedroomTypeValues.I.ToString();
@@ -52,6 +81,6 @@ namespace apihotelcap.Services
                 throw new Exception("O Id do quarto não pode ser 0");
             else
                 return true;
-        }
+        }            
     }
 }

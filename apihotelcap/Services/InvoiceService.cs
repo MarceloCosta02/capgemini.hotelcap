@@ -34,13 +34,13 @@ namespace apihotelcap.Services
             var occupations = await _repo.GetOccupationsDontPaid();
 
             if (!occupations.Any())
-                throw new Exception("Não existem ocupações com pagamento pendente");
+                return new TransferResultDTO("Não existem ocupações com pagamento pendente", 400);
             else
             {
                 foreach (var item in occupations)
                 {
                     result = await _transferFacade.CallTransferAPI(item);
-                    if (result.Status == "400")
+                    if (result.Status == 404 || result.Status == 400)
                         return result;
                     else
                     {

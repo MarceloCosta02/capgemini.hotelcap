@@ -20,22 +20,22 @@ namespace apihotelcap.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> SendOccupationsDontPaid()
         {
             try
             {
                 var result = await _service.GetOccupationsDontPaid();
 
-                if(result.Status == "201")
+                if(result.Status == 200)
                     return new ObjectResult(result) { StatusCode = StatusCodes.Status201Created };
                 else
-                    return new ObjectResult(result) { StatusCode = StatusCodes.Status400BadRequest };
+                    return new ObjectResult(result) { StatusCode = result.Status };
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

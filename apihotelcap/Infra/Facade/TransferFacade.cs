@@ -33,14 +33,13 @@ namespace apihotelcap.Infra.Facade
                 var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage resposta = await _client.PostAsync(_bankGateway.GetBankServiceKey(BankGatewayEndpoint.Transfer), data);
-                resposta.EnsureSuccessStatusCode();
                 var json = await resposta.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<TransferResultDTO>(json.ToString());
-            }           
-            catch (JsonSerializationException js)
+            }
+            catch(Exception ex)
             {
-                throw new HttpRequestException($"Retorno da API contem valores nulos {js.Message}", js.InnerException);
-            }           
+                return new TransferResultDTO(ex.Message, 404);
+            }                      
         }
     }
 }

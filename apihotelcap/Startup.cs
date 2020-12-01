@@ -38,6 +38,9 @@ namespace apihotelcap
 
             services.AddScoped<IBedroomTypeService, BedroomTypeService>();
             services.AddScoped<IBedroomTypeRepository, BedroomTypeRepository>();
+
+            services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IClientRepository, ClientRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

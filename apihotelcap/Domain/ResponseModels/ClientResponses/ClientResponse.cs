@@ -11,11 +11,11 @@ namespace apihotelcap.Domain.ResponseModels.ClientResponses
         public string Name { get; set; }
         public string CPF { get; set; }
 
-        public ClientResponse(int id, string name, string cPF)
+        public ClientResponse(int id, string name, string cpf)
         {
             Id = id;
             Name = name;
-            CPF = cPF;
+            CPF = cpf;
         }
     }
 }

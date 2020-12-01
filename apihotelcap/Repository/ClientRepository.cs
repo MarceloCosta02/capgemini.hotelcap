@@ -21,24 +21,8 @@ namespace apihotelcap.Repository
         public ClientRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
-        }
-                         
-
-        /// <summary>
-        /// Metodo que lista um tipo de quarto pelo id
-        /// </summary>
-        /// <param name="Id"></param>
-        public BedroomTypeResponse GetBedroomTypeById(int Id)
-        {
-            var connection = new SqlConnection(_connectionString);
-
-            var query = "select Id, Description, Value from BedroomType " +
-                            " where Id = @Id";
-
-            var result = connection.Query<BedroomTypeResponse>(query, new { Id = Id });
-
-            return result.FirstOrDefault();
-        }
+        }      
+      
 
         /// <summary>
         /// Metodo que cadastra os clientes no banco

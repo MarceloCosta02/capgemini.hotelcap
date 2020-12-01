@@ -29,7 +29,7 @@ namespace apihotelcap.Controllers
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpGet]
-        public IActionResult GetBedroomTypeById([FromQuery] int Id)
+        public IActionResult GetClientById([FromQuery] int Id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace apihotelcap.Controllers
         /// <response code="201">Retorna que a operação foi criada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpPost]
-        public IActionResult CreateBedroomType([FromBody] ClientCreateRequest client)
+        public IActionResult CreateClient([FromBody] ClientCreateRequest client)
         {
             try
             {

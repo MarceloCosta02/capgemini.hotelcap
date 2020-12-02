@@ -4,6 +4,16 @@ GO
 
 USE HotelCap
 
+CREATE TABLE [User] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(80) NOT NULL,
+    [Password] nvarchar(15) NOT NULL,
+	[Profile] nvarchar(50) NOT NULL,
+    CONSTRAINT [PK_User] PRIMARY KEY ([Id])
+);
+
+GO
+
 CREATE TABLE [Client] (
     [Id] int NOT NULL IDENTITY,
     [Name] nvarchar(80) NOT NULL,

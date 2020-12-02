@@ -28,7 +28,7 @@ namespace apihotelcap.Controllers
                 var result = await _service.GetOccupationsDontPaid();
 
                 if(result.Status == 200)
-                    return new ObjectResult(result) { StatusCode = StatusCodes.Status201Created };
+                    return new ObjectResult(result) { StatusCode = StatusCodes.Status200OK };
                 else
                     return new ObjectResult(result) { StatusCode = result.Status };
 

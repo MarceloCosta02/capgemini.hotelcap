@@ -34,7 +34,7 @@ namespace apihotelcap.Services
             var occupations = await _repo.GetOccupationsDontPaid();
 
             if (!occupations.Any())
-                return new TransferResultDTO("Não existem ocupações com pagamento pendente", 400);
+                return new TransferResultDTO("Não existem ocupações com pagamento pendente", 200);
             else
             {
                 foreach (var item in occupations)

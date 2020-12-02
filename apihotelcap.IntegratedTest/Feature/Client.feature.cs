@@ -80,13 +80,17 @@ namespace apihotelcap.IntegratedTest.Feature
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Listar Clientes")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Listar Clientes")]
         [Xunit.TraitAttribute("FeatureTitle", "Client")]
         [Xunit.TraitAttribute("Description", "Listar Clientes")]
-        public virtual void ListarClientes()
+        [Xunit.InlineDataAttribute("1", "200", new string[0])]
+        [Xunit.InlineDataAttribute("2317313", "400", new string[0])]
+        public virtual void ListarClientes(string id, string resposta, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("id", id);
+            argumentsOfScenario.Add("resposta", resposta);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Listar Clientes", null, tagsOfScenario, argumentsOfScenario);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
@@ -115,27 +119,27 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("que o método http do client é \'GET\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 8
- testRunner.And("que o id é 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And(string.Format("que o id é {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 9
  testRunner.When("obter o cliente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
 #line 10
- testRunner.Then("a resposta de client será 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+ testRunner.Then(string.Format("a resposta de client será {0}", resposta), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Inserir Clientes")]
+        [Xunit.SkippableFactAttribute(DisplayName="Inserir Clientes com sucesso")]
         [Xunit.TraitAttribute("FeatureTitle", "Client")]
-        [Xunit.TraitAttribute("Description", "Inserir Clientes")]
-        public virtual void InserirClientes()
+        [Xunit.TraitAttribute("Description", "Inserir Clientes com sucesso")]
+        public virtual void InserirClientesComSucesso()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inserir Clientes", null, tagsOfScenario, argumentsOfScenario);
-#line 12
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inserir Clientes com sucesso", null, tagsOfScenario, argumentsOfScenario);
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -155,26 +159,79 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 13
+#line 18
  testRunner.Given("que o endpoint client é \'Client\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
-#line 14
+#line 19
  testRunner.And("que o método http do client é \'POST\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 15
+#line 20
  testRunner.And("que o name é \"Marcelo\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 16
+#line 21
  testRunner.And("que o cpf é \"44495985809\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 17
+#line 22
  testRunner.And("que o hash é \"GDUS11HDU\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 18
+#line 23
  testRunner.When("obter o cliente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
-#line 19
+#line 24
  testRunner.Then("a resposta de client será 201", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Inserir Clientes com cpf vazio")]
+        [Xunit.TraitAttribute("FeatureTitle", "Client")]
+        [Xunit.TraitAttribute("Description", "Inserir Clientes com cpf vazio")]
+        public virtual void InserirClientesComCpfVazio()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inserir Clientes com cpf vazio", null, tagsOfScenario, argumentsOfScenario);
+#line 26
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 27
+ testRunner.Given("que o endpoint client é \'Client\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+#line hidden
+#line 28
+ testRunner.And("que o método http do client é \'POST\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 29
+ testRunner.And("que o name é \"Marcelo\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 30
+ testRunner.And("que o cpf é \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 31
+ testRunner.And("que o hash é \"GDUS11HDU\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 32
+ testRunner.When("obter o cliente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+#line hidden
+#line 33
+ testRunner.Then("a resposta de client será 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             }
             this.ScenarioCleanup();

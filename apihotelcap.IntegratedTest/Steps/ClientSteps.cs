@@ -86,7 +86,16 @@ namespace apihotelcap.IntegratedTest.Steps
                     _restRequest.AddParameter("id", _id);
             }               
             else if(_restRequest.Method == Method.POST)
-                _restRequest.AddJsonBody(new { Name = _name, CPF = _cpf, Hash = _hash });
+                if(_cpf.Length < 11)
+                {
+                    var obj = new { Name = _name, Hash = _hash };
+                    _restRequest.AddJsonBody(obj);
+                }
+                else
+                {
+                    var obj = new { Name = _name, CPF = _cpf, Hash = _hash };
+                    _restRequest.AddJsonBody(obj);
+                }
 
             _restClient.BaseUrl = new Uri(_host);
             _restResponse = _restClient.Execute(_restRequest);

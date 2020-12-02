@@ -53,6 +53,8 @@ namespace apihotelcap
 
             services.AddScoped<IBankGateway, BankGateway>();
             services.AddScoped<ITransferFacade, TransferFacade>();
+
+            services.ConfigurarJWT();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +69,8 @@ namespace apihotelcap
 
             app.UseRouting();
 
+            app.UtilizarConfiguracaoJWT();
+
             app.UtilizarConfiguracaoSwagger();
 
             app.UseAuthorization();
@@ -75,8 +79,6 @@ namespace apihotelcap
             {
                 endpoints.MapControllers();
             });
-
-
         }
     }
 }

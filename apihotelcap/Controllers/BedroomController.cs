@@ -29,7 +29,7 @@ namespace apihotelcap.Controllers
         /// <returns>Uma Lista de quarto por Id</returns>
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
-        [HttpGet("getByIdId")]
+        [HttpGet("getById")]
         public IActionResult GetBedroomById([FromQuery] int Id)
         {
             try

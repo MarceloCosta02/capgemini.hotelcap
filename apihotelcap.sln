@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apihotelcap", "apihotelcap\apihotelcap.csproj", "{83F15041-499C-4830-90AD-2BD3C681033E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apihotelcap", "apihotelcap\apihotelcap.csproj", "{83F15041-499C-4830-90AD-2BD3C681033E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apihotelcap.Test", "apihotelcap.Test\apihotelcap.Test.csproj", "{6116330B-19F5-49E6-893B-9258E8653853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apihotelcap.Test", "apihotelcap.Test\apihotelcap.Test.csproj", "{6116330B-19F5-49E6-893B-9258E8653853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apihotelcap.IntegratedTest", "apihotelcap.IntegratedTest\apihotelcap.IntegratedTest.csproj", "{4549582F-3119-45AD-956A-985747939754}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6116330B-19F5-49E6-893B-9258E8653853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6116330B-19F5-49E6-893B-9258E8653853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6116330B-19F5-49E6-893B-9258E8653853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4549582F-3119-45AD-956A-985747939754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4549582F-3119-45AD-956A-985747939754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4549582F-3119-45AD-956A-985747939754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4549582F-3119-45AD-956A-985747939754}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

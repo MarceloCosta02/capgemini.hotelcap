@@ -10,19 +10,21 @@ using Xunit;
 namespace apihotelcap.IntegratedTest.Steps
 {
     [Binding]
-    public class ClientStep
+    public class OccupationSteps
     {
         private string _host = "https://localhost:44314/api/";
         private IRestClient _restClient;
         private IRestRequest _restRequest;
         private IRestResponse _restResponse;
         private IObjectContainer _objectContainer;
-        private int _id;
-        private string _name;
-        private string _cpf;
-        private string _hash;
+        private int _qtdeDiarys;
+        private DateTime _date;
+        private string _situation;
+        private int _idClient;
+        private int _idBedroom;
 
-        public ClientStep(IObjectContainer objectContainer) => _objectContainer = objectContainer;
+
+        public OccupationSteps(IObjectContainer objectContainer) => _objectContainer = objectContainer;
 
         [BeforeScenario]
         public void Setup()
@@ -36,10 +38,10 @@ namespace apihotelcap.IntegratedTest.Steps
             _restClient.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
         }        
 
-        [Given(@"que o endpoint client é '(.*)'")]
+        [Given(@"que o endpoint occupation é '(.*)'")]
         public void DadoQueAUrlDoEndPointEh(string endpoint) => _restRequest.Resource = endpoint;
 
-        [Given(@"que o método http do client é '(.*)'")]
+        [Given(@"que o método http do occupation é '(.*)'")]
         public void DadoQueOMetodoHttpEh(string metodo)
         {
             if (metodo.ToUpper() == "GET")
@@ -56,37 +58,41 @@ namespace apihotelcap.IntegratedTest.Steps
         }
 
 
-        [Given(@"que o id é (.*)")]
-        public void DadoQueOIdDoClienteEh(int id) => _id = id;
+        [Given(@"que a quantidade de diarias é (.*)")]
+        public void DadoQueAQtdeDiarysDaOcupacaoEh(int qtdeDiarys) => _qtdeDiarys = qtdeDiarys;
 
-        [Given(@"que o name é (.*)")]
-        public void DadoQueONomeDoClienteEh(string name) => _name = name;
+        [Given(@"que a situacao é (.*)")]
+        public void DadoQueASituacaoDaOcupacaoEh(string situation) => _situation = situation;
 
-        [Given(@"que o cpf é (.*)")]
-        public void DadoQueOCPFDoClienteEh(string cpf) => _cpf = cpf;
+        [Given(@"que a data é (.*)")]
+        public void DadoQueADataDaOcupacaoEh(DateTime date) => _date = date;
 
-        [Given(@"que o hash é (.*)")]
-        public void DadoQueOHashDoClienteEh(string hash) => _hash = hash;
+        [Given(@"que o Id do Quarto é (.*)")]
+        public void DadoQueOIdDoQuartoDaOcupacaoEh(int idBedroom) => _idBedroom = idBedroom;
 
-        [When(@"obter o cliente")]
-        public void QuandoObterOCliente() => Client();
+        [Given(@"que o Id do Cliente é (.*)")]
+        public void DadoQueOIdDoClienteDaOcupacaoEh(int idClient) => _idClient = idClient;
+
+        [When(@"obter a ocupacao")]
+        public void QuandoObterAOcupacao() => Occupation();
 
 
-        [Then(@"a resposta de client será (.*)")]
+        [Then(@"a resposta de occupation será (.*)")]
         public void EntaoARespostaSera(HttpStatusCode statusCode) => Assert.Equal(statusCode, _restResponse.StatusCode);
 
 
-        public void Client()
+        public void Occupation()
         {
             _restRequest.AddHeader("Content-Type", "application/json");
-
-            if(_restRequest.Method == Method.GET)
-            {
-                if (_id != 0)
-                    _restRequest.AddParameter("id", _id);
-            }               
-            else if(_restRequest.Method == Method.POST)
-                _restRequest.AddJsonBody(new { Name = _name, CPF = _cpf, Hash = _hash });
+                                   
+            _restRequest.AddJsonBody(new 
+            { 
+                QtdeDiarys = _qtdeDiarys, 
+                Date = _date, 
+                Situation = _situation, 
+                IdClient = _idClient , 
+                IdBedroom = _idBedroom 
+            });
 
             _restClient.BaseUrl = new Uri(_host);
             _restResponse = _restClient.Execute(_restRequest);

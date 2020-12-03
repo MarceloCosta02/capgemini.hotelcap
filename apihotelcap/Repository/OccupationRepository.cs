@@ -65,6 +65,9 @@ namespace apihotelcap.Repository
             return result.ToList();
         }
 
+        /// <summary>
+        /// Metodo que atualiza as ocupações para pagas
+        /// </summary>
         public void SetOccupationsToPaid(string Situation, int Id)
         {
             var connection = new SqlConnection(_connectionString);

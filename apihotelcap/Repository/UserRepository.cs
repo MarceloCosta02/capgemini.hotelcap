@@ -20,7 +20,11 @@ namespace apihotelcap.Repository
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
-               
+
+        /// <summary>
+        /// Metodo que cadastra os clientes no banco
+        /// </summary>
+        /// <param name="user"></param>
         public void InsertUser(UserCreateRequest user)
         {
             var connection = new SqlConnection(_connectionString);
@@ -39,7 +43,10 @@ namespace apihotelcap.Repository
             Debug.WriteLine("User cadastrado com sucesso");
         }
 
-
+        /// <summary>
+        /// Metodo loga o usuário
+        /// </summary>
+        /// <param name="user"></param>
         public UserLoginResponse ValidateUser(UserLoginRequest user)
         {
             var connection = new SqlConnection(_connectionString);

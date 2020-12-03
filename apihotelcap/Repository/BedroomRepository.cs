@@ -22,6 +22,10 @@ namespace apihotelcap.Repository
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        /// <summary>
+        /// Metodo que cadastra os quartos no banco
+        /// </summary>
+        /// <param name="bedroom"></param>
         public void InsertBedroom(BedroomCreateRequest bedroom)
         {
             var connection = new SqlConnection(_connectionString);

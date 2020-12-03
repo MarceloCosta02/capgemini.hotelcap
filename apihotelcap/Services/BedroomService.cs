@@ -21,6 +21,10 @@ namespace apihotelcap.Services
             _repo = repo;
         }
 
+        /// <summary>
+        /// Metodo que retorna um quarto pelo Id
+        /// </summary>
+        /// <param name="Id"></param>
         public BedroomAndBedroomTypeResponse GetBedroomById(int Id)
         {
             var result = _repo.GetBedroomById(Id);
@@ -31,6 +35,10 @@ namespace apihotelcap.Services
                 return result;
         }
 
+        /// <summary>
+        /// Metodo que retorna um quarto pelo Id do tipo do quarto
+        /// </summary>
+        /// <param name="IdBedroomType"></param>
         public IEnumerable<BedroomAndBedroomTypeResponse> GetBedroomByIdBedroomType(int IdBedroomType)
         {
             var result = _repo.GetBedroomByIdBedroomType(IdBedroomType);
@@ -41,6 +49,10 @@ namespace apihotelcap.Services
                 return result;
         }
 
+        /// <summary>
+        /// Metodo que insere quartos
+        /// </summary>
+        /// <param name="bedroom"></param>
         public void InsertBedroom(BedroomCreateRequest bedroom)
         {
             var result = ValidateBedroomChilds(bedroom);
@@ -57,6 +69,11 @@ namespace apihotelcap.Services
             }          
         }
 
+        /// <summary>
+        /// Metodo que atualiza a situação de um quarto
+        /// </summary>
+        /// <param name="bedroomUpdate"></param>
+        /// <param name="Id"></param>
         public string UpdateSituation(BedroomUpdateRequest bedroomUpdate, int Id)
         {
             if (!bedroomUpdate.Situation.Any())
@@ -68,7 +85,11 @@ namespace apihotelcap.Services
             }
         }
 
-        public bool ValidateBedroomChilds(BedroomCreateRequest bedroom)
+        /// <summary>
+        /// Metodo que valida os campos enviados por parametro
+        /// </summary>
+        /// <param name="bedroom"></param>
+        private bool ValidateBedroomChilds(BedroomCreateRequest bedroom)
         {
             string Active = BedroomTypeValues.A.ToString();
             string Inactive = BedroomTypeValues.I.ToString();

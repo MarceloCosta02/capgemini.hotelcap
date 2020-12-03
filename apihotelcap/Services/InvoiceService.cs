@@ -27,7 +27,9 @@ namespace apihotelcap.Services
             _transferFacade = transferFacade;
         }
 
-
+        /// <summary>
+        /// Metodo que lista as ocupações não pagas
+        /// </summary>
         public async Task<TransferResultDTO> GetOccupationsDontPaid()
         {
             TransferResultDTO result = null;

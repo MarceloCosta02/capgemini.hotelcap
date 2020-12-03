@@ -29,14 +29,22 @@ namespace apihotelcap.Services
             _repo = repo;
         }
 
+        /// <summary>
+        /// Metodo que cadastra os usuários no banco
+        /// </summary>
+        /// <param name="user"></param>
         public void CreateUser(UserCreateRequest user)
         {
             var result = ValidateUserChilds(user);
 
             if(result)
                 _repo.InsertUser(user);
-        }                
-              
+        }
+
+        /// <summary>
+        /// Metodo loga o usuário
+        /// </summary>
+        /// <param name="user"></param>
         public UserLoginResponse Login(UserLoginRequest user)
         {
             var result = _repo.ValidateUser(user);
@@ -53,6 +61,10 @@ namespace apihotelcap.Services
             }
         }
 
+        /// <summary>
+        /// Metodo que gera o JWT Token
+        /// </summary>
+        /// <param name="user"></param>
         private string GenerateToken(UserLoginResponse user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -73,6 +85,10 @@ namespace apihotelcap.Services
             return tokenHandler.WriteToken(token);
         }
 
+        /// <summary>
+        /// Metodo que valida os campos enviados por parametro
+        /// </summary>
+        /// <param name="user"></param>
         private bool ValidateUserChilds(UserCreateRequest user)
         {
             if (string.IsNullOrEmpty(user.Name))

@@ -20,8 +20,12 @@ namespace apihotelcap.Services
         public ClientService(IClientRepository repo)
         {
             _repo = repo;
-        }                   
+        }
 
+        /// <summary>
+        /// Metodo que lista um cliente pelo id
+        /// </summary>
+        /// <param name="Id"></param>
         public ClientResponse GetClientById(int Id)
         {
             var result = _repo.GetClientById(Id);
@@ -30,8 +34,12 @@ namespace apihotelcap.Services
                 throw new Exception($"Não existe um cliente com o ID: {Id}");
             else
                 return result;
-        }      
+        }
 
+        /// <summary>
+        /// Metodo que insere os clientes no banco
+        /// </summary>
+        /// <param name="client"></param>
         public void InsertClient(ClientCreateRequest client)
         {
             var result = ValidateClientChilds(client);
@@ -40,6 +48,11 @@ namespace apihotelcap.Services
                 _repo.InsertClient(client);
         }
 
+
+        /// <summary>
+        /// Metodo que valida os campos enviados por parametro
+        /// </summary>
+        /// <param name="createRequest"></param>
         private bool ValidateClientChilds(ClientCreateRequest createRequest)
         {
             if (string.IsNullOrEmpty(createRequest.Name))

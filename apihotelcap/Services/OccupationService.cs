@@ -37,6 +37,10 @@ namespace apihotelcap.Services
             }       
         }
 
+        /// <summary>
+        /// Metodo que valida os campos enviados por parametro
+        /// </summary>
+        /// <param name="occupation"></param>
         private bool ValidateOccupationChilds(OccupationCreateRequest occupation)
         {
             if (occupation.QtdeDiarys.Equals(0))

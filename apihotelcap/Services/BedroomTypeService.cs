@@ -20,6 +20,9 @@ namespace apihotelcap.Services
             _repo = repo;
         }
 
+        /// <summary>
+        /// Metodo que retorna todos os tipos de quarto
+        /// </summary>  
         public IEnumerable<BedroomTypeResponse> GetAllBedroomsType()
         {
             var result = _repo.GetAllBedroomsType();
@@ -30,6 +33,10 @@ namespace apihotelcap.Services
                 return result;
         }
 
+        /// <summary>
+        /// Metodo que retorna um tipo de quarto pelo id
+        /// </summary>
+        /// <param name="Id"></param>
         public BedroomTypeResponse GetBedroomTypeById(int Id)
         {
             var result = _repo.GetBedroomTypeById(Id);
@@ -40,6 +47,10 @@ namespace apihotelcap.Services
                 return result;
         }
 
+        /// <summary>
+        /// Metodo que insere os tipos de quartos
+        /// </summary>
+        /// <param name="bedroomType"></param>
         public void InsertBedroomType(BedroomTypeCreateRequest bedroomType)
         {
             var result = ValidateBedroomTypeChilds(bedroomType);
@@ -47,9 +58,13 @@ namespace apihotelcap.Services
             if (result)            
                 _repo.InsertBedroomType(bedroomType);           
             
-        }      
+        }
 
-        public bool ValidateBedroomTypeChilds(BedroomTypeCreateRequest bedroomType)
+        /// <summary>
+        /// Metodo que valida os campos enviados por parametro
+        /// </summary>
+        /// <param name="bedroomType"></param>
+        private bool ValidateBedroomTypeChilds(BedroomTypeCreateRequest bedroomType)
         {
             if (bedroomType.Value <= 0)
                 throw new Exception("O valor não pode ser menor ou igual a R$0,00");

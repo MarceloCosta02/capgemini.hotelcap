@@ -21,6 +21,13 @@ namespace apihotelcap.Controllers
             _service = service;
         }
 
+        // GET 
+        /// <summary>
+        /// Envia uma notificação para as ocupacoes nao pagas
+        /// </summary>
+        /// <returns>Uma nova ocupação cadastrada</returns>
+        /// <response code="200">Retorna que a operação foi criada</response>
+        /// <response code="400">Se a operação não for criada</response>  
         [HttpGet]
         [Authorize(Roles = "ADM")]
         public async Task<IActionResult> SendOccupationsDontPaid()

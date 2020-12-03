@@ -15,7 +15,6 @@ namespace apihotelcap.Interfaces.Services
         /// <param name="bedroomType"></param>
         void InsertBedroomType(BedroomTypeCreateRequest bedroomType);
 
-
         /// <summary>
         /// Metodo que retorna todos os tipos de quarto
         /// </summary>  

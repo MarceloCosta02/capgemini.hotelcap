@@ -10,7 +10,7 @@ namespace apihotelcap.Interfaces.Repository
     public interface IUserService
     {
         /// <summary>
-        /// Metodo que cadastra os clientes no banco
+        /// Metodo que cadastra os usuários no banco
         /// </summary>
         /// <param name="user"></param>
         void CreateUser(UserCreateRequest user);

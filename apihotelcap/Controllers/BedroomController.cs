@@ -91,14 +91,14 @@ namespace apihotelcap.Controllers
             }
         }
 
-        // POST 
+        // PATCH 
         /// <summary>
         /// Realiza a atualização da situation
         /// </summary>
         /// <param name="bedroomUpdate"></param>/>   
         /// <param name="Id"></param>/>      
         /// <returns>Um novo quarto criado</returns>
-        /// <response code="201">Retorna que a operação foi criada</response>
+        /// <response code="200">Retorna que a operação foi criada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpPatch]
         [Authorize(Roles = "ADM,USER")]

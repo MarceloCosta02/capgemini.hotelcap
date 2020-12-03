@@ -4,12 +4,13 @@ GO
 
 USE HotelCap
 
-CREATE TABLE [User] (
+CREATE TABLE [UserHotel] (
     [Id] int NOT NULL IDENTITY,
     [Name] nvarchar(80) NOT NULL,
+	[Email] nvarchar(30) NOT NULL,
     [Password] nvarchar(15) NOT NULL,
 	[Profile] nvarchar(50) NOT NULL,
-    CONSTRAINT [PK_User] PRIMARY KEY ([Id])
+    CONSTRAINT [PK_UserHotel] PRIMARY KEY ([Id])
 );
 
 GO

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -29,6 +30,7 @@ namespace apihotelcap.Controllers
         /// <response code="201">Retorna que a operação foi criada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpPost]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult CreateBedroomType([FromBody] BedroomTypeCreateRequest bedroomType)
         {
             try
@@ -50,6 +52,7 @@ namespace apihotelcap.Controllers
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpGet]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult GetAllBedroomsType()
         {
             try
@@ -72,6 +75,7 @@ namespace apihotelcap.Controllers
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpGet("getById")]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult GetBedroomTypeById([FromQuery] int Id)
         {
             try

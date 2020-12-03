@@ -54,6 +54,9 @@ namespace apihotelcap
             services.AddScoped<IBankGateway, BankGateway>();
             services.AddScoped<ITransferFacade, TransferFacade>();
 
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
             services.ConfigurarJWT();
         }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using apihotelcap.Domain.RequestModels.ClientRequests;
+using apihotelcap.Domain.RequestModels.UserRequests;
+using apihotelcap.Interfaces.Repository;
 using apihotelcap.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,30 +14,31 @@ namespace apihotelcap.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ClientController : ControllerBase
+    public class UserController : ControllerBase
     {        
-        private readonly IClientService _service;
+        private readonly IUserService _service;
 
-        public ClientController(IClientService service)
+        public UserController(IUserService service)
         {
             _service = service;
         }
 
-        // GET By Id
+        // POST
         /// <summary>
-        /// Lista cliente pelo ID
+        /// Loga o usuário
         /// </summary>
-        /// <param name="Id"></param>/>      
-        /// <returns>Um cliente pelo Id</returns>
+        /// <param name="userLogin"></param>/>      
+        /// <returns>Usuário logado</returns>
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
-        [HttpGet]
+        [AllowAnonymous]
+        [HttpPost("login")]
         [Authorize(Roles = "ADM,USER")]
-        public IActionResult GetClientById([FromQuery] int Id)
+        public IActionResult Login([FromBody] UserLoginRequest userLogin)
         {
             try
             {
-                var result = _service.GetClientById(Id);
+                var result = _service.Login(userLogin);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -46,20 +49,20 @@ namespace apihotelcap.Controllers
 
         // POST 
         /// <summary>
-        /// Cadastra um cliente
+        /// Cadastra um usuário
         /// </summary>
-        /// <param name="client"></param>/>      
-        /// <returns>Um novo cliente cadastrado</returns>
+        /// <param name="user"></param>/>      
+        /// <returns>Um novo usuário cadastrado</returns>
         /// <response code="201">Retorna que a operação foi criada</response>
         /// <response code="400">Se a operação não for criada</response>  
-        [HttpPost]
-        [Authorize(Roles = "ADM,USER")]
-        public IActionResult CreateClient([FromBody] ClientCreateRequest client)
+        [HttpPost("createUser")]
+        [Authorize(Roles = "ADM")]
+        public IActionResult CreateUser([FromBody] UserCreateRequest user)
         {
             try
             {
-                _service.InsertClient(client);
-                return Created("Cliente cadastrado", client);
+                _service.CreateUser(user);
+                return Created("Usuário cadastrado", user);
             }
             catch (Exception ex)
             {

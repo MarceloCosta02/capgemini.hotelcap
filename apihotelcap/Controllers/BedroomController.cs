@@ -7,6 +7,7 @@ using apihotelcap.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using apihotelcap.Domain.RequestModels.BedroomRequests;
+using Microsoft.AspNetCore.Authorization;
 
 namespace apihotelcap.Controllers
 {
@@ -30,6 +31,7 @@ namespace apihotelcap.Controllers
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpGet("getById")]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult GetBedroomById([FromQuery] int Id)
         {
             try
@@ -52,6 +54,7 @@ namespace apihotelcap.Controllers
         /// <response code="200">Retorna que a operação foi retornada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpGet("getByIdBedroomType")]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult GetBedroomByIdBedroomType([FromQuery] int IdBedroomType)
         {
             try
@@ -74,6 +77,7 @@ namespace apihotelcap.Controllers
         /// <response code="201">Retorna que a operação foi criada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpPost]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult CreateBedroom([FromBody] BedroomCreateRequest bedroom)
         {
             try
@@ -97,6 +101,7 @@ namespace apihotelcap.Controllers
         /// <response code="201">Retorna que a operação foi criada</response>
         /// <response code="400">Se a operação não for criada</response>  
         [HttpPatch]
+        [Authorize(Roles = "ADM,USER")]
         public IActionResult UpdateSituation([FromBody] BedroomUpdateRequest bedroomUpdate, [FromQuery] int Id)
         {
             try

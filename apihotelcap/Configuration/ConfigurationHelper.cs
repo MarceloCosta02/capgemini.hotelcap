@@ -3,7 +3,7 @@ using System;
 
 namespace apihotelcap.Configuration
 {
-    public class ConfigurationHelper
+    public static class ConfigurationHelper
     {
         public static string GetAppSettingsKeyConfig(string nameKey)
         {

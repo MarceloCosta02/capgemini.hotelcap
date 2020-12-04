@@ -1,17 +1,9 @@
-﻿using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
-using apihotelcap.Domain.RequestModels.BedroomRequests;
-using apihotelcap.Domain.RequestModels.ClientRequests;
-using apihotelcap.Domain.ResponseModels.ClientResponses;
+﻿using apihotelcap.Domain.RequestModels.ClientRequests;
 using apihotelcap.Interfaces.Repository;
 using apihotelcap.Services;
 using AutoFixture;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace apihotelcap.Test.Services

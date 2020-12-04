@@ -4,12 +4,9 @@ using apihotelcap.Interfaces.Repository;
 using apihotelcap.Services;
 using AutoFixture;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace apihotelcap.Test.Services

@@ -1,9 +1,6 @@
 ﻿using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Domain.ResponseModels.Bedroom.BedroomResponses;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apihotelcap.Interfaces.Services
 {

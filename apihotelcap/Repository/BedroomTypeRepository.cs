@@ -3,12 +3,10 @@ using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Interfaces.Repository;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace apihotelcap.Repository
 {

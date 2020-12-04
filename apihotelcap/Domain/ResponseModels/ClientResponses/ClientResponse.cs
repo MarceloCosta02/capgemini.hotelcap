@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace apihotelcap.Domain.ResponseModels.ClientResponses
+﻿namespace apihotelcap.Domain.ResponseModels.ClientResponses
 {
     public class ClientResponse
     {

@@ -1,22 +1,12 @@
 ﻿using apihotelcap.Configuration;
-using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
-using apihotelcap.Domain.RequestModels.BedroomRequests;
-using apihotelcap.Domain.RequestModels.ClientRequests;
 using apihotelcap.Domain.RequestModels.UserRequests;
-using apihotelcap.Domain.ResponseModels.ClientResponses;
 using apihotelcap.Domain.ResponseModels.UserResponses;
-using apihotelcap.Enums;
 using apihotelcap.Interfaces.Repository;
-using apihotelcap.Interfaces.Services;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace apihotelcap.Services
 {

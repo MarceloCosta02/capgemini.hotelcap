@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace apihotelcap.Domain.Models
+﻿namespace apihotelcap.Domain.Models
 {
     public class ClientModel
     {

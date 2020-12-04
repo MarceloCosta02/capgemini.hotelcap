@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using apihotelcap.Interfaces.Repository;
 using apihotelcap.Domain.ResponseModels.UserResponses;
 using apihotelcap.Domain.RequestModels.UserRequests;

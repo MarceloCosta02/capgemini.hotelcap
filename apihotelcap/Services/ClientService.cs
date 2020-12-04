@@ -1,15 +1,8 @@
-﻿using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
-using apihotelcap.Domain.RequestModels.BedroomRequests;
-using apihotelcap.Domain.RequestModels.ClientRequests;
+﻿using apihotelcap.Domain.RequestModels.ClientRequests;
 using apihotelcap.Domain.ResponseModels.ClientResponses;
-using apihotelcap.Enums;
 using apihotelcap.Interfaces.Repository;
 using apihotelcap.Interfaces.Services;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apihotelcap.Services
 {

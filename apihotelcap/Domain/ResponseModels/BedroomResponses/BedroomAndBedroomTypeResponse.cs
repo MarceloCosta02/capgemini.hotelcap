@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace apihotelcap.Domain.ResponseModels.Bedroom.BedroomResponses
+﻿namespace apihotelcap.Domain.ResponseModels.Bedroom.BedroomResponses
 {
     public class BedroomAndBedroomTypeResponse
     {

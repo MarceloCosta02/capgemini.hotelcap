@@ -1,9 +1,5 @@
 ﻿using apihotelcap.Domain.RequestModels.UserRequests;
 using apihotelcap.Domain.ResponseModels.UserResponses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apihotelcap.Interfaces.Repository
 {

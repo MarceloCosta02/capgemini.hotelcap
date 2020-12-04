@@ -1,12 +1,8 @@
 ﻿using apihotelcap.Domain.Models;
-using apihotelcap.Domain.RequestModels.Bedroom.BedroomResponses;
-using apihotelcap.Domain.RequestModels.BedroomRequests;
 using apihotelcap.Domain.RequestModels.ClientRequests;
-using apihotelcap.Domain.ResponseModels.ClientResponses;
 using apihotelcap.Interfaces.Repository;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;

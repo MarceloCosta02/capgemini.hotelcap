@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using apihotelcap.Interfaces.Services;
-using apihotelcap.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using apihotelcap.Domain.RequestModels.BedroomRequests;
 using Microsoft.AspNetCore.Authorization;
 
